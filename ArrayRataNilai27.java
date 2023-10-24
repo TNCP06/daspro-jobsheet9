@@ -4,9 +4,14 @@ public class ArrayRataNilai27 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int[] nilaiMhs = new int[10];
-        double total = 0;
-        double rata2;
+        double totalLulus = 0, totalTidakLulus = 0;
+        double rata2, rata2TidakLulus;
+        int counter = 0, counter2 = 0;
+        byte x;
+        
+        System.out.print("Masukkan jumlah mahasiswa: ");
+        x = input.nextByte();
+        int[] nilaiMhs = new int[x];
 
         for (int i = 0; i < nilaiMhs.length; i++) {
             System.out.print("Masukkan nilai mahasiswa ke-"+(i+1)+": ");
@@ -14,11 +19,20 @@ public class ArrayRataNilai27 {
         }
 
         for (int i = 0; i < nilaiMhs.length; i++) {
-            total += nilaiMhs[i];
+            if (nilaiMhs[i] > 70) {
+                totalLulus += nilaiMhs[i];
+                counter++;
+            } else {
+                totalTidakLulus += nilaiMhs[i];
+                counter2++;
+            }
         }
 
-        rata2 = total/nilaiMhs.length;
-        System.out.println("Rata-rata nilai = "+rata2);
+        rata2 = totalLulus/counter;
+        rata2TidakLulus = totalTidakLulus/counter2;
+        System.out.println("Rata-rata nilai lulus = "+rata2);
+        System.out.println("Rata-rata nilai tidak lulus = "+rata2TidakLulus);
+        System.out.println("Banyaknya mahasiswa yang lulus(nilai > 70): "+counter);
 
         input.close();
     }
